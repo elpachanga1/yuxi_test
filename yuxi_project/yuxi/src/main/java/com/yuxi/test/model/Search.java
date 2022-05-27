@@ -1,4 +1,4 @@
-package com.elastisearch.yuxi.model;
+package com.yuxi.test.model;
 
 import java.util.Date;
 import javax.persistence.Entity;

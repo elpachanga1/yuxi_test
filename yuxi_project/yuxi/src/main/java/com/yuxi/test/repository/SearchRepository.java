@@ -1,8 +1,8 @@
-package com.elastisearch.yuxi.repository;
+package com.yuxi.test.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.elastisearch.yuxi.model.Search;
+import com.yuxi.test.model.Search;
 
 public interface SearchRepository extends JpaRepository<Search, Integer> {
 	

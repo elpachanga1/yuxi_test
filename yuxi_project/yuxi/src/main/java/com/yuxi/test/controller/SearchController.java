@@ -1,4 +1,4 @@
-package com.elastisearch.yuxi.controller;
+package com.yuxi.test.controller;
 
 import java.util.List;
 
@@ -7,13 +7,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.elastisearch.yuxi.model.Search;
-import com.elastisearch.yuxi.service.SearchService;
+import com.yuxi.test.model.Search;
+import com.yuxi.test.service.SearchService;
 
 @RestController
 public class SearchController {
@@ -30,11 +28,11 @@ public class SearchController {
 		return result.getContent();
 	}
 	
-	@PostMapping("savesearch")
+	/*@PostMapping("savesearch")
 	public Search saveSearch(@RequestBody Search yuxiSearch) {
 		searchService.save(yuxiSearch);
 		return yuxiSearch;
-	}
+	}*/
 	
 	@GetMapping("searchdata")
 	public List<Search> getData() {

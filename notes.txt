@@ -1,0 +1,31 @@
+// run elasticsearch in powershell
+// go to the elasticseearch route
+
+bin/elasticsearch.bat
+
+// in console there is a parameter called ""public_access" there is some useful elasticsearch information
+
+// run kibana in powershell
+// go to the kibana route
+bin/kibana.bat
+
+//open kibana in 
+http://localhost:5601
+
+// see indexes
+localhost:9200/_cat/indices
+
+// create index (database)
+Invoke-RestMethod "http://localhost:9200/yuxi_data?pretty" -Method Put
+
+// insert file in elasticsearch 
+Invoke-RestMethod "http://localhost:9200/yuxi_data/_doc/_bulk?pretty" -Method Post -ContentType 'application/json' -InFile "wikihow_18k.json"
+
+// queries in elasticsearch
+// search all
+http://localhost:9200/yuxi_data/_search
+{
+    "query": {
+        "match_all": {}
+    }
+}

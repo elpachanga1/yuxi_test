@@ -1,4 +1,4 @@
-package com.yuxi.test.model;
+package com.yuxi.test.jpa.model;
 
 import java.util.Date;
 import javax.persistence.Entity;

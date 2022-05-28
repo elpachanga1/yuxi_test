@@ -7,16 +7,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yuxi.test.model.Search;
-import com.yuxi.test.service.SearchService;
+import com.yuxi.test.elasticsearch.model.YuxiData;
+import com.yuxi.test.elasticsearch.service.YuxiDataService;
+import com.yuxi.test.jpa.model.Search;
+import com.yuxi.test.jpa.service.SearchService;
 
 @RestController
 public class SearchController {
 	@Autowired
 	private SearchService searchService;
+	private YuxiDataService yuxiDataService;
 	
 	@GetMapping("searchhistory")
 	public List<Search> getSearches(
@@ -35,7 +39,12 @@ public class SearchController {
 	}*/
 	
 	@GetMapping("searchdata")
-	public List<Search> getData() {
-		return null;
+	public List<YuxiData> getData() {
+		return yuxiDataService.findAll();
 	}
+	
+	/*@GetMapping("searchdata/{id}")
+	public YuxiData getData(@PathVariable String id) {
+		return yuxiDataService.findById(id);
+	}*/
 }

@@ -19,7 +19,7 @@ localhost:9200/_cat/indices
 Invoke-RestMethod "http://localhost:9200/yuxi_data?pretty" -Method Put
 
 // insert file in elasticsearch 
-Invoke-RestMethod "http://localhost:9200/yuxi_data/_doc/_bulk?pretty" -Method Post -ContentType 'application/json' -InFile "wikihow_18k.json"
+Invoke-RestMethod "http://localhost:9200/yuxi_data/_doc?pretty" -Method Post -ContentType 'application/json' -InFile "wikihow_18k.json"
 
 // queries in elasticsearch
 // search all

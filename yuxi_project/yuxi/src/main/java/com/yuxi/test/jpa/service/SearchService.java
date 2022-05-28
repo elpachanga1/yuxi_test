@@ -1,9 +1,9 @@
-package com.yuxi.test.service;
+package com.yuxi.test.jpa.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.yuxi.test.model.Search;
+import com.yuxi.test.jpa.model.Search;
 
 public interface SearchService {
 	// public void save(Search yuxiSearch);

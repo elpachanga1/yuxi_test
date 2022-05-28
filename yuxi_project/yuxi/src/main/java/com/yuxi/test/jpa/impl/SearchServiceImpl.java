@@ -14,10 +14,9 @@ public class SearchServiceImpl implements SearchService {
 	@Autowired
 	private SearchRepository searchRepository;
 
-	/*@Override
 	public void save(Search yuxiSearch) {
 		searchRepository.save(yuxiSearch);
-	}*/
+	}
 	
 	public Page<Search> find(Pageable pageable) {
 		return searchRepository.findAll(pageable);

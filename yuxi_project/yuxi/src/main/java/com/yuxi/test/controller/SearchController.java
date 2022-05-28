@@ -1,5 +1,6 @@
 package com.yuxi.test.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yuxi.test.elasticsearch.model.YuxiData;
-import com.yuxi.test.elasticsearch.service.YuxiDataService;
+import com.yuxi.test.elasticsearch.ElasticSearchService;
 import com.yuxi.test.jpa.model.Search;
 import com.yuxi.test.jpa.service.SearchService;
 
@@ -20,7 +20,7 @@ import com.yuxi.test.jpa.service.SearchService;
 public class SearchController {
 	@Autowired
 	private SearchService searchService;
-	private YuxiDataService yuxiDataService;
+	private ElasticSearchService elasticSearchService = new ElasticSearchService();
 	
 	@GetMapping("searchhistory")
 	public List<Search> getSearches(
@@ -39,8 +39,18 @@ public class SearchController {
 	}*/
 	
 	@GetMapping("searchdata")
-	public List<YuxiData> getData() {
-		return yuxiDataService.findAll();
+	public String getData() {
+		String values = elasticSearchService.getElasticSearchValues();
+		
+		// Dummy object
+		Search search = new Search();
+		search.setPage(0);
+		search.setSize(25);
+		search.setUser_id(10);
+		search.setSearch_date(new Date(System.currentTimeMillis()));
+		
+		searchService.save(search);
+		return values;
 	}
 	
 	/*@GetMapping("searchdata/{id}")

@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "bc294f54-76b5-4d26-93e1-eba5e0415f6e",
+		"name": "YuxiSearch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3433524"
+	},
+	"item": [
+		{
+			"name": "searchhistory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "page",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/searchhistory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"searchhistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "savesearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": 1,\r\n    \"search_date\": \"2018-12-10T13:45:00.000Z\",\r\n    \"column_start\": 0,\r\n    \"column_end\": 50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/savesearch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"savesearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchdata",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "page",
+							"value": "2",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "5",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/searchdata",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"searchdata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/yuxi_data/_search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"match_all\": {}\r\n    }\r\n}\r\n/*{\r\n    \"query\": {\r\n        \"bool\": {\"filter\": {\r\n            \"term\": {\"data.task\": \"How to Attract Birds to Your Garden\"}\r\n        }}\r\n    }\r\n}*/",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/yuxi_data/_search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"yuxi_data",
+						"_search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9200/yuxi_data/_doc/_bulk",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9200/yuxi_data/_doc/_bulk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"yuxi_data",
+						"_doc",
+						"_bulk"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
